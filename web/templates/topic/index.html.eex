@@ -1,0 +1,23 @@
+<h3>Topics</h3>
+
+<ul class="collection">
+  <%= for topic <- @topics do %>
+    <li class="collection-item">
+      <%= topic.title %>
+      <div class="right">
+        <%= link to: topic_path(@conn, :edit, topic), class: "btn-small" do %>
+          <i class="material-icons">mode_edit</i>
+        <% end %>
+        <%= link to: topic_path(@conn, :delete, topic), data: [confirm: "Are you sure?"], method: :delete, class: "btn-small" do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<div class="fixed-action-btn">
+  <%= link to: topic_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %>
+    <i class="material-icons">add</i>
+  <% end %>
+</div>
